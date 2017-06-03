@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import FirebaseMessaging
 
 class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
 
@@ -59,11 +60,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         dbRef.child("messages").childByAutoId().setValue(msg)
     }
     @IBAction func SignIn(_ sender: Any) {
+        let token: [String: AnyObject] = [Messaging.messaging().fcmToken!: Messaging.messaging().fcmToken as AnyObject]
+        
         Auth.auth().signInAnonymously { (user, error) in
             if error != nil {
                 print("error: \(String(describing: error?.localizedDescription))")
             } else {
-                
+                self.postToken(Token: token)
                 self.signInBtn.isHidden = true
                 self.signOutBtn.isHidden = false
             }
@@ -82,7 +85,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         
     }
     
-    
+    func postToken(Token: [String: AnyObject]) {
+        print("FCM Token: \(Token)")
+        let dbRef = Database.database().reference()
+        dbRef.child("fcmToken").child(Messaging.messaging().fcmToken!).setValue(Token)
+    }
     
     func observeMessages() {
         self.messages.removeAll()

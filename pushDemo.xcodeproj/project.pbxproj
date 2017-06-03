@@ -30,6 +30,7 @@
 		E3A180D71EE01197008DE1A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3A180DD1EE011CE008DE1A1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E3A180DF1EE01666008DE1A1 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		E3A180E11EE2B9B9008DE1A1 /* pushDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = pushDemo.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +74,7 @@
 		E3A180CA1EE01197008DE1A1 /* pushDemo */ = {
 			isa = PBXGroup;
 			children = (
+				E3A180E11EE2B9B9008DE1A1 /* pushDemo.entitlements */,
 				E3A180CB1EE01197008DE1A1 /* AppDelegate.swift */,
 				E3A180CD1EE01197008DE1A1 /* ViewController.swift */,
 				E3A180CF1EE01197008DE1A1 /* Main.storyboard */,
@@ -131,6 +133,14 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 548R832R3Y;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -347,6 +357,7 @@
 			baseConfigurationReference = 5F5A2312B40045E1011BB693 /* Pods-pushDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = pushDemo/pushDemo.entitlements;
 				DEVELOPMENT_TEAM = 548R832R3Y;
 				INFOPLIST_FILE = pushDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -361,6 +372,7 @@
 			baseConfigurationReference = 7DE72BEF10729E0C53DBAEC0 /* Pods-pushDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = pushDemo/pushDemo.entitlements;
 				DEVELOPMENT_TEAM = 548R832R3Y;
 				INFOPLIST_FILE = pushDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
